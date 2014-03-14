@@ -1,0 +1,83 @@
+
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+xftalpha 0.8
+
+update_interval 1.0
+total_run_times 0
+
+own_window no
+own_window_type normal
+own_window_transparent yes
+
+own_window_hints undecorated,below,skip_pager
+double_buffer yes
+
+maximum_width 700
+minimum_size 900
+
+draw_shades no
+draw_outline yes
+draw_borders no
+
+stippled_borders 8 no
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color white
+default_outline_color black
+
+alignment top_left
+
+gap_x 20
+gap_y 40
+
+default_bar_size 0 12
+
+no_buffers yes
+uppercase no
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale no
+
+lua_load ~/.i3/clock_rings.lua
+lua_draw_hook_pre clock_rings
+
+TEXT
+${voffset -30}${color 0066FF}${font caviar dreams:size=16}${time %A}${font}
+${voffset -8}${color FFFFFF}${font caviar dreams:size=38}${time %e}${voffset -10}${color 0066FF}${font caviar dreams:size=18} ${time %b}${voffset -10}${font}${color FFFFFF}${font caviar dreams:size=20} ${time %Y}${font}${color 0066FF} ${voffset -40}${font DejaVu Sans Mono:size=36}${time %H}:${time %M}${hr}
+${voffset -20}${font}${font caviar dreams:size=18}${nodename}
+
+${image ~/.i3/fedora-logo.png -p 550,10 -s 160x70}
+
+${voffset -60}${font :size=12}${color}${sysname} ${color}kernel: ${kernel}
+Uptime: ${uptime}
+Load: ${loadavg}
+IP: ${addrs}
+Swap: ${swapperc}%
+
+${voffset 40}
+${color 0066FF}CPU${goto 270}DISK${goto 520}MEM
+${color}${cpugraph 50,200 88aadd 0066FF}${goto 270}${diskiograph 50,200 88aadd 0066FF}${goto 520}${memgraph 50,200 88aadd 0066FF}
+
+${color 0066FF}File systems:${hr 2}${color}
+${color}/     ${goto 100}${fs_used_perc /}% ${fs_free /}     ${color 0066FF}${goto 200}${fs_bar /}
+${color}/home ${goto 100}${fs_used_perc /home}% ${fs_free /home}% ${color 0066FF}${goto 200}${fs_bar /home}
+
+${color 0066FF}Name    ${goto 200} PID     CPU%   MEM%${hr 2}
+${color} ${top name 1} ${goto 200}${top pid 1} ${top cpu 1} ${top mem 1}
+${color} ${top name 2} ${goto 200}${top pid 2} ${top cpu 2} ${top mem 2}
+${color} ${top name 3} ${goto 200}${top pid 3} ${top cpu 3} ${top mem 3}
+${color} ${top name 4} ${goto 200}${top pid 4} ${top cpu 4} ${top mem 4}
+
+${color 0066FF}Mem usage${hr 2}
+${color} ${top_mem name 1} ${goto 200}${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+${color} ${top_mem name 2} ${goto 200}${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+${color} ${top_mem name 3} ${goto 200}${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+${color} ${top_mem name 4} ${goto 200}${top_mem pid 4} ${top_mem cpu 4} ${top_mem mem 4}
+
+${color 0066FF}Logs ${hr 2}
+${color}${font :size=8}${tail /var/log/messages 10}
