@@ -9,9 +9,13 @@ source ~/.i3/start-gnome-keyring.sh
 
 # ANDROID stuff
 export JAVA_HOME=/usr/lib/jvm/java/
-export ANDROID_HOME=~/bin/android-sdk-linux
+export ANDROID_HOME=~/bin/adt-bundle/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # i3
 # TERMINAL="xterm"
+
+# Oracle stuff
+export ORACLE_HOME=/usr/lib/oracle/11.2/client64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/lib
