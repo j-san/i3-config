@@ -51,7 +51,7 @@ ${voffset -30}${color 0066FF}${font caviar dreams:size=16}${time %A}${font}
 ${voffset -8}${color FFFFFF}${font caviar dreams:size=38}${time %e}${voffset -10}${color 0066FF}${font caviar dreams:size=18} ${time %b}${voffset -10}${font}${color FFFFFF}${font caviar dreams:size=20} ${time %Y}${font}${color 0066FF} ${voffset -40}${font DejaVu Sans Mono:size=36}${time %H}:${time %M}${hr}
 ${voffset -20}${font}${font caviar dreams:size=18}${nodename}
 
-${image ~/.i3/distri-logo.png -p 550,10 -s 160x70}
+${image ~/.i3/distri-logo.png -p 580,10 -s 100x70}
 
 ${voffset -60}${font :size=12}${color}${sysname} ${color}kernel: ${kernel}
 Uptime: ${uptime}

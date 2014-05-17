@@ -13,15 +13,15 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
-
-font -misc-liberation mono-medium-r-normal--0-0-0-0-m-0-iso8859-15
+# font -misc-liberation mono-medium-r-normal--0-0-0-0-m-0-iso8859-15
 # font pango:Andale Mono 12
+
+font pango:DejaVu Sans Mono 14
 
 #xsetroot -solid "#333333"
 exec --no-startup-id feh --bg-fill ~/Pictures/be-ladybird-be-brussels.jpg
@@ -31,7 +31,8 @@ exec gpk-update-viewer
 exec conky -c ~/.i3/conkyrc
 exec dropbox start
 exec xchat
-# exec nautilus --no-desktop
+exec --no-startup-id nm-applet # newtork applet
+exec thunar --daemon
 # exec ~/.i3/start-gnome-keyring.sh
 
 # Screensaver and Power Management
@@ -69,7 +70,7 @@ bindsym $mod+Shift+A kill
 
 bindsym $mod+d exec synapse
 # bindsym $mod+space exec synapse
-bindsym $mod+Shift+D exec nautilus
+bindsym $mod+Shift+D exec thunar
 
 # change focus
 bindsym $mod+j focus left
