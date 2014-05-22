@@ -24,12 +24,13 @@ set $mod Mod4
 font pango:DejaVu Sans Mono 14
 
 #xsetroot -solid "#333333"
+exec ~/.i3/configure-xrandr.sh
 exec --no-startup-id feh --bg-fill ~/Pictures/be-ladybird-be-brussels.jpg
 exec evolution
 exec deja-dup --backup
 exec gpk-update-viewer
-exec conky -c ~/.i3/conkyrc
-exec dropbox start
+# exec conky -c ~/.i3/conkyrc
+exec dropboxd
 exec xchat
 exec --no-startup-id nm-applet # newtork applet
 exec thunar --daemon

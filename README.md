@@ -4,13 +4,14 @@ Packages
 
 ## i3 desktop
     i3 i3lock i3status synapse dunst tmux slim feh conky conky-lua alsa-utils
+    bash-completion
     # keychain
 
 ## laptop stuff
     acpi
 
 ## file manager
-    ldm ntfs-3g thunar
+    ldm ntfs-3g thunar dropbox thunar-dropbox
 
 ## tools
     meld sublime-text git mercurial dia pencil gnumeric libreoffice
@@ -26,4 +27,3 @@ Packages
 echo -e "\nsource ~/.i3/bashrc" >> ~/.bashrc
 # ln -s ~/.i3/tmux.conf ~/.tmux.conf
 ```
-
