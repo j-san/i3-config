@@ -4,6 +4,8 @@
 EXIT_CODE='$(RETURN=$?; if [[ $RETURN != 0 ]]; then echo -ne "\[\e[0;31m\]($RETURN)\[\e[0m\]"; fi;)'
 PS1="$EXIT_CODE\W\$ "
 
+export TERMINAL='urxvt'
+
 # activate keyring capabilities
 source ~/.i3/start-gnome-keyring.sh
 

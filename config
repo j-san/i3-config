@@ -11,53 +11,44 @@
 
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font -misc-liberation mono-medium-r-normal--0-0-0-0-m-0-iso8859-15
-# font pango:Andale Mono 12
-
 font pango:DejaVu Sans Mono 14
 
 #xsetroot -solid "#333333"
-exec ~/.i3/configure-xrandr.sh
-exec --no-startup-id feh --bg-fill ~/Pictures/be-ladybird-be-brussels.jpg
+exec_always ~/.i3/configure-xrandr.sh
+exec_always feh --bg-fill ~/Pictures/be-ladybird-be-brussels.jpg
+exec_always xrdb -load ~/.i3/Xresources
+exec dunst -config ~/.i3/dunst
+# exec conky -c ~/.i3/conkyrc
+exec nm-applet # newtork applet
+exec udiskie -2 --tray
+exec thunar --daemon
+exec dropboxd
+
+# Startup application
 exec evolution
 exec deja-dup --backup
-exec gpk-update-viewer
-# exec conky -c ~/.i3/conkyrc
-exec dropboxd
 exec xchat
-exec --no-startup-id nm-applet # newtork applet
-exec thunar --daemon
-# exec ~/.i3/start-gnome-keyring.sh
 
 # Screensaver and Power Management
-exec --no-startup-id xset dpms 300
-# xss-lock -- ~/.i3/i3exit lock
+exec xset dpms 300
 
-# 0066FF
-set $blue1 #729FCF
-set $blue2 #CCCCFF
-set $gray1 #CCCCCC
+set $blue1 #4C9ED9
+set $blue2 #2D5B7D
+set $gray1 #EBECED
 set $gray2 #333333
 set $white #FFFFFF
 set $black #000000
 
 #                       border1 box   text   border2
-client.focused          $blue2 $blue1 $white $gray2
-client.focused_inactive $gray1 $gray1 $grey2 $gray2
-client.unfocused        $gray1 $gray2 $gray1 $gray2
+client.focused          $blue2  $blue1 $white $gray2
+client.focused_inactive $gray1  $gray1 $grey2 $gray2
+client.unfocused        $gray1  $gray2 $gray1 $gray2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal # -e "tmux -f ~/.i3/tmux.conf attach-session -t work" # || tmux -f ~/.i3/tmux.conf new-session -s work"
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -169,14 +160,14 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (s) shutdown, (r) reboot, (l) lock, (e) logout, (u) suspend, (h) hibernate
 mode "$mode_system" {
+    bindsym s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
+    bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
     bindsym l exec --no-startup-id ~/.i3/i3exit lock, mode "default"
     bindsym e exec --no-startup-id ~/.i3/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id ~/.i3/i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id ~/.i3/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id ~/.i3/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
