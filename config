@@ -11,14 +11,14 @@
 
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 14
+font pango:DejaVu Sans Mono 11
 
 #xsetroot -solid "#333333"
 exec_always ~/.i3/configure-xrandr.sh
 exec_always feh --bg-fill ~/Pictures/be-ladybird-be-brussels.jpg
 exec_always xrdb -load ~/.i3/Xresources
 exec dunst -config ~/.i3/dunst
-# exec conky -c ~/.i3/conkyrc
+exec conky -c ~/.i3/conkyrc
 exec nm-applet # newtork applet
 exec udiskie -2 --tray
 exec thunar --daemon
@@ -32,17 +32,38 @@ exec xchat
 # Screensaver and Power Management
 exec xset dpms 300
 
-set $blue1 #4C9ED9
-set $blue2 #2D5B7D
-set $gray1 #EBECED
-set $gray2 #333333
+set $lblue #4C9ED9
+set $dblue #2D5B7D
+set $lgrey #EBECED
+set $dgrey #555555
 set $white #FFFFFF
 set $black #000000
+set $red   #DD0000
 
-#                       border1 box   text   border2
-client.focused          $blue2  $blue1 $white $gray2
-client.focused_inactive $gray1  $gray1 $grey2 $gray2
-client.unfocused        $gray1  $gray2 $gray1 $gray2
+#                       border  backgr  text   indicator
+client.focused          $white  $lblue  $white $lgrey
+client.focused_inactive $lgrey  $dgrey  $lgrey $lgrey
+client.unfocused        $dgrey  $black  $lgrey $black
+client.urgent           $white  $red    $white $red
+
+
+bar {
+    status_command i3status -c ~/.i3/i3status.conf
+    colors {
+        background $black
+        statusline $lgrey
+        separator  $lgrey
+
+        #                  border  backgr  text
+        focused_workspace  $white  $lblue  $white
+        active_workspace   $lgrey  $dgrey  $lgrey
+        inactive_workspace $dgrey  $black  $lgrey
+        urgent_workspace   $white  $red    $white
+    }
+}
+
+hide_edge_borders both
+binding_mode_indicator yes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -160,7 +181,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-set $mode_system System (s) shutdown, (r) reboot, (l) lock, (e) logout, (u) suspend, (h) hibernate
+set $mode_system Exit (s) shutdown, (r) reboot, (l) lock, (e) logout, (u) suspend, (h) hibernate
 mode "$mode_system" {
     bindsym s exec --no-startup-id ~/.i3/i3exit shutdown, mode "default"
     bindsym r exec --no-startup-id ~/.i3/i3exit reboot, mode "default"
@@ -214,10 +235,3 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    status_command i3status -c ~/.i3/i3status.conf
-}
-
-# using `dunst` for notifications

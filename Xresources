@@ -1,9 +1,12 @@
+! reload it with 'xrdb -load ~/.i3/Xresources'
+! find script under /usr/lib/urxvt/perl/
+
 URxvt.depth: 32
 URxvt.background: [10]#333333
 URxvt.foreground: #DDDDDD
 ! URxvt*.transparent: true
 ! URxvt*.shading: 110
-URxvt.font: xft:dejavusansmono:size=12
+URxvt.font: xft:dejavusansmono:size=9
 URxvt.scrollstyle: plain
 
 URxvt.perl-ext-common: default,matcher,tabbed,clipboard,url-select
