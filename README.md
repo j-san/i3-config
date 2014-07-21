@@ -17,7 +17,7 @@ And install i3 and following packages. After that, reboot.
 
 ## i3 desktop
     i3 i3lock i3status synapse dunst feh conky conky-lua
-    bash-completion
+    bash-completion xss-lock (AUR)
 
 
 ## Login manager
@@ -40,7 +40,8 @@ And install i3 and following packages. After that, reboot.
 
 ## Tools
     meld sublime-text git mercurial dia pencil gnumeric libreoffice
-    evolution evolution-exchange
+    evolution evolution-exchange dnsutils
+    aspell aspell-en aspell-{your language}
 
 
 ## Media and Sounds
@@ -53,44 +54,25 @@ And install i3 and following packages. After that, reboot.
 
 ```
 echo -e "\nsource ~/.i3/bashrc" >> ~/.bashrc
+
+xdg-mime default Thunar-folder-handler.desktop inode/directory
 ```
 
 ## Control
 
 Mod is the Windows or Mac button.
 
-Mod + d
-  Start a program (Synapse)
-
-Mod + Enter
-  Start terminal
-
-Mod + Shift + d
-  Open file manager
-
-Mod + q
-  Close current window
-
-Mod + Shift + q
-  Exit mode
-
-Mod + Arrows
-  Navigate between windows
-
-Mod + Shift + Arrows
-  Move window
-
-Mod + 1-9 (not numpad)
-  Change workspace
-
-Mod + Control + Shift + Arrows
-  Move workspace (multi-screen)
-
-Mod + r
-  Resize mode
-
-Mod + z, Mod + e, Mod + s
-  Switch window disposition mode
-
-Mod + h, Mod + v
-  Switch new window position mode (horizontal / vertical)
+| Shortcut                       | Action                                                  |
+| ------------------------------ | ------------------------------------------------------- |
+| Mod + d                        | Start a program (Synapse)                               |
+| Mod + Enter                    | Start terminal                                          |
+| Mod + Shift + d                | Open file manager                                       |
+| Mod + q                        | Close current window                                    |
+| Mod + Shift + q                | Exit mode                                               |
+| Mod + Arrows                   | Navigate between windows                                |
+| Mod + Shift + Arrows           | Move window                                             |
+| Mod + 1-9                      | Change workspace (not with numpad)                      |
+| Mod + Control + Shift + Arrows | Move workspace (multi-screen)                           |
+| Mod + r                        | Resize mode                                             |
+| Mod + z, Mod + e, Mod + s      | Switch window disposition mode                          |
+| Mod + h, Mod + v               | Switch new window position mode (horizontal / vertical) |

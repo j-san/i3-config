@@ -31,6 +31,8 @@ exec xchat
 
 # Screensaver and Power Management
 exec xset dpms 300
+exec xset led 2 # num lock
+exec xss-lock -- ~/.i3/i3exit lock
 
 set $lblue #4C9ED9
 set $dblue #2D5B7D
